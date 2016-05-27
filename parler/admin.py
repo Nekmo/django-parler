@@ -580,11 +580,11 @@ class TranslatableAdmin(BaseTranslatableAdmin, admin.ModelAdmin):
         """
         opts = self.model._meta
         app_label = opts.app_label
-        return _lazy_select_template_name((
+        return str(_lazy_select_template_name((
             "admin/{0}/{1}/change_form.html".format(app_label, opts.object_name.lower()),
             "admin/{0}/change_form.html".format(app_label),
             "admin/change_form.html"
-        ))
+        )))
 
 
 _lazy_select_template_name = lazy(select_template_name, six.text_type)
